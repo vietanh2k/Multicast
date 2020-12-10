@@ -9,6 +9,8 @@ import static ACO.Map.n;
 import static ACO.SoLieu.SLkien;
 import static ACO.SoLieu.bayhoi;
 import static ACO.SoLieu.q;
+import static ACO.SoLieu.tmax;
+import static ACO.SoLieu.tmin;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -29,8 +31,9 @@ public class DanKien {
     
     public void KhoiTaoMui(){
         MaTranMui = new double[n][n];
+        SoLieu.KhoiTao();
         for(int i=0;i<n;i++)
-            for(int j=0;j<n;j++) MaTranMui[i][j] = 0.1;
+            for(int j=0;j<n;j++) MaTranMui[i][j] = (tmax +tmin)/2;
     }
     
     public void KhoiTaoDanKien(){
@@ -49,7 +52,17 @@ public class DanKien {
         double delta = q/Smin;
         for(int i=0;i<HanhTrinh.size();i++){
             ///them mui
+//            if(>tmax)   =tmax;
+//            if(<tmin)   =tmin;
         }
     }
     
+    public void KienChay(){
+        while( !dieu kien dung){
+            KhoiTaoDanKien();
+            for(int i=0;i<SLkien;i++){
+                    DSkien.get(i).TimDuong();
+            }
+    }
+    }
 }

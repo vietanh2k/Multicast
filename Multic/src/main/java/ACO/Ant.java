@@ -73,4 +73,11 @@ public class Ant {
     public void TinhQD(){
            ///////tinh
         }
+    
+    public void TimDuong(){
+        for(int i=0;i<SoLieu.dich.size();i++){
+            int tmp=SoLieu.dich.get(i);
+            while(!DaTham.contains(tmp)) CanhNext();
+        }
+    }
 }
