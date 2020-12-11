@@ -22,15 +22,14 @@ import java.util.List;
 public class Ant {
     int ID;
     double QuangDuong;
-    ArrayList<Integer> HanhTrinh;
+    ArrayList<ArrayList<Integer>> HanhTrinh;
     ArrayList<Integer> DaTham;
     
 
 
     public Ant(int id) {
-        HanhTrinh = new ArrayList();
-        DaTham = new ArrayList();
-        HanhTrinh.add(1);
+        HanhTrinh = new ArrayList<ArrayList<Integer>>();
+        DaTham = new ArrayList();       
         DaTham.add(1);
         ID=id;
         QuangDuong = 0;
@@ -39,9 +38,10 @@ public class Ant {
 
     
     public void CanhNext(){
+        ArrayList<Integer> Canh = new ArrayList<>(2);
         ArrayList<Double> ts = new ArrayList();
         double xs=0,ms=0;
-        int dem = 0, index1, index2;
+        int dem = 0,index1=0,index2=0;
         double q = SoLieu.rd.nextDouble();
         for(int i=0;i<DaTham.size();i++){
             int tpnow = DaTham.get(i);
@@ -61,18 +61,20 @@ public class Ant {
                dem++;
                if(xs>=q) {
                    DaTham.add(j);
+                   Canh.add(tpnow);
+                   Canh.add(j);
                    index1 = tpnow;
-                   index2 = j;
+                   index2= j;
                    break;
                }
         }            
         }
-        ////addd      
+
+        HanhTrinh.add(Canh);
+        DanKien.CanhDaTham.add(Canh);
+        QuangDuong =QuangDuong + MaTranKC[index1][index2];
     }
     
-    public void TinhQD(){
-           ///////tinh
-        }
     
     public void TimDuong(){
         for(int i=0;i<SoLieu.dich.size();i++){

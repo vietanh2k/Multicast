@@ -21,15 +21,16 @@ public class DanKien {
     static double[][] MaTranMui;
     ArrayList<Ant> DSkien;
     double QuangDuongmin;
-    ArrayList<Integer> HanhTrinhmin;
+    ArrayList<ArrayList<Integer>> HanhTrinhmin;
+    static ArrayList<ArrayList<Integer>> CanhDaTham;
     
     public DanKien(){
         KhoiTaoMui();
         QuangDuongmin = 9999;
-        HanhTrinhmin = new ArrayList<Integer>();
+        HanhTrinhmin = new ArrayList<ArrayList<Integer>>();
     }
     
-    public void KhoiTaoMui(){
+    public static void KhoiTaoMui(){
         MaTranMui = new double[n][n];
         SoLieu.KhoiTao();
         for(int i=0;i<n;i++)
@@ -37,6 +38,7 @@ public class DanKien {
     }
     
     public void KhoiTaoDanKien(){
+        CanhDaTham = new ArrayList<>();
         DSkien = new ArrayList<Ant>();
         Ant ant;
         for(int i=0;i<SLkien;i++) {
@@ -45,15 +47,18 @@ public class DanKien {
         }
     }
     
-    public void CapNhatMui(double Smin, ArrayList<Integer> HanhTrinh){
+    public void CapNhatMui(double Smin, ArrayList HanhTrinh){
         for(int i=0;i<n;i++)
             for(int j=0;j<n;j++) MaTranMui[i][j] = MaTranMui[i][j] * (1 - bayhoi);
         
         double delta = q/Smin;
-        for(int i=0;i<HanhTrinh.size();i++){
-            ///them mui
-//            if(>tmax)   =tmax;
-//            if(<tmin)   =tmin;
+        for(int u=0;u<CanhDaTham.size();u++){
+            int i = CanhDaTham.get(u).get(0);
+            int j = CanhDaTham.get(u).get(1);
+            double Tij = MaTranMui[i][j] + delta;
+            if(Tij>tmax)   Tij = tmax;
+            if(Tij<tmin)   Tij = tmin;
+            MaTranMui[i][j] = Tij;
         }
     }
     
@@ -61,7 +66,11 @@ public class DanKien {
         while( !dieu kien dung){
             KhoiTaoDanKien();
             for(int i=0;i<SLkien;i++){
-                    DSkien.get(i).TimDuong();
+               DSkien.get(i).TimDuong();
+               if(DSkien.get(i).QuangDuong < QuangDuongmin){
+                   QuangDuongmin = DSkien.get(i).QuangDuong;
+                   HanhTrinhmin = DSkien.get(i).HanhTrinh;
+               }
             }
     }
     }
