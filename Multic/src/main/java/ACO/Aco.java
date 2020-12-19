@@ -5,17 +5,27 @@
  */
 package ACO;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author VietAnh
  */
 public class Aco {
     DanKien danKien;
+    double Smin;
+    ArrayList<Edge> HTmin;
+    
+    public Aco(){
+        for(int i=0;i<50;i++){
+        KhoiTaoACO();
+        ChayACO();
+        Smin = DanKien.QuangDuongmin;
+        HTmin = DanKien.HanhTrinhmin;
+        }
+    }
     public void KhoiTaoACO(){
-       /// Map.Khoitao
-       DanKien.KhoiTaoMui();
-       danKien = new DanKien();
-       
+       danKien = new DanKien();       
     }
     
     public void ChayACO(){

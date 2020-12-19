@@ -6,14 +6,11 @@
 package ACO;
 
 
-import static ACO.DanKien.MaTranMui;
-import static ACO.Map.MaTranKC;
-import static ACO.Map.n;
+
 import static ACO.SoLieu.al;
 import static ACO.SoLieu.be;
 import static java.lang.Math.pow;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -22,13 +19,13 @@ import java.util.List;
 public class Ant {
     int ID;
     double QuangDuong;
-    ArrayList<ArrayList<Integer>> HanhTrinh;
+    ArrayList<Edge> HanhTrinh;
     ArrayList<Integer> DaTham;
     
 
 
     public Ant(int id) {
-        HanhTrinh = new ArrayList<ArrayList<Integer>>();
+        HanhTrinh = new ArrayList<Edge>();
         DaTham = new ArrayList();       
         DaTham.add(1);
         ID=id;
@@ -45,9 +42,10 @@ public class Ant {
         double q = SoLieu.rd.nextDouble();
         for(int i=0;i<DaTham.size();i++){
             int tpnow = DaTham.get(i);
-            for(int j=2;j<=n;j++)
-            if(!DaTham.contains(j) && MaTranKC[tpnow][j] != 0){
-                double tmp = pow(MaTranMui[tpnow][j], al) / pow(MaTranKC[tpnow][j], be);
+            for(int j=0;j<Map.listCanh.size();j++)
+            if(Map.listCanh.get(j).d1 == tpnow && !DaTham.contains(Map.listCanh.get(j).d2)){
+                    
+                double tmp = pow(Map.listCanh.get(j).mui, al) / pow(Map.listCanh.get(j).kc, be);
                 ms=ms+tmp;
                 ts.add(tmp);
         }            
@@ -55,30 +53,26 @@ public class Ant {
         
         for(int i=0;i<DaTham.size();i++){
             int tpnow = DaTham.get(i);
-            for(int j=2;j<=n;j++)
-            if(!DaTham.contains(j) && MaTranKC[tpnow][j] != 0){
-               xs = xs+ ts.get(dem)/ms;
-               dem++;
-               if(xs>=q) {
-                   DaTham.add(j);
-                   Canh.add(tpnow);
-                   Canh.add(j);
-                   index1 = tpnow;
-                   index2= j;
+            for(int j=0;j<Map.listCanh.size();j++)
+            if(Map.listCanh.get(j).d1 == tpnow && !DaTham.contains(Map.listCanh.get(j).d2)){                    
+                xs = xs+ ts.get(dem)/ms;
+                dem++;
+                if(xs>=q) {
+                   DaTham.add(Map.listCanh.get(j).d2);
+                   HanhTrinh.add(Map.listCanh.get(j));
+                   QuangDuong = QuangDuong + Map.listCanh.get(j).kc;
+                   DanKien.CanhDaTham.add(j);
                    break;
                }
         }            
         }
-
-        HanhTrinh.add(Canh);
-        DanKien.CanhDaTham.add(Canh);
-        QuangDuong =QuangDuong + MaTranKC[index1][index2];
+       
     }
     
     
     public void TimDuong(){
-        for(int i=0;i<SoLieu.dich.size();i++){
-            int tmp=SoLieu.dich.get(i);
+        for(int i=0;i<Map.listDich.size();i++){
+            int tmp=Map.listDich.get(i);
             while(!DaTham.contains(tmp)) CanhNext();
         }
     }

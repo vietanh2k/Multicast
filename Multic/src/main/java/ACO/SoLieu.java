@@ -5,7 +5,7 @@
  */
 package ACO;
 
-import static ACO.Map.n;
+
 import java.util.Random;
 import java.util.ArrayList;
 
@@ -22,12 +22,11 @@ public class SoLieu {
     static double tmax = 0;
     static double tmin = 0;
     static Random rd ;
-    static ArrayList<Integer> dich;
     
     public static void KhoiTao(){
         rd = new Random();
 //        tmax = SLkien /(bayhoi * UocLuongS());
-        tmin = tmax/n;
+        tmin = tmax;
     }
     
 //    public static double UocLuongS(){
