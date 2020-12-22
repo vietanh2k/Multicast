@@ -16,10 +16,9 @@ public class Map {
     static ArrayList<Integer> listDinh;
     static ArrayList<Integer> listDich;
     
-    public Map(ArrayList<Edge> listcanh, ArrayList<Integer> listdinh, ArrayList<Integer> listdich){
+    public Map(ArrayList<Edge> listcanh, ArrayList<Integer> listdich){
         listCanh = listcanh;
         listDich = listdich;
-        listDinh = listdinh;
     }
     
 }

@@ -37,7 +37,7 @@ public class DanKien {
     
     
     
-    public void CapNhatMui(double Smin){
+    public static void CapNhatMui(double Smin){
         for(int i=0;i<Map.listCanh.size();i++)
            Map.listCanh.get(i).mui = Map.listCanh.get(i).mui * (1 - bayhoi);
         

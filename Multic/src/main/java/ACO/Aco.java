@@ -20,6 +20,7 @@ public class Aco {
         for(int i=0;i<50;i++){
         KhoiTaoACO();
         ChayACO();
+        DanKien.CapNhatMui(Smin);
         Smin = DanKien.QuangDuongmin;
         HTmin = DanKien.HanhTrinhmin;
         }

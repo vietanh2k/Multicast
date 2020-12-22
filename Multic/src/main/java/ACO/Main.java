@@ -5,12 +5,20 @@
  */
 package ACO;
 
+import DocMap.DocFile;
+import DocMap.MapDomain;
+import java.io.IOException;
+
 /**
  *
  * @author VietAnh
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+         new DocFile();
+         new MapDomain();
+         new Map(MapDomain.listCanhD, MapDomain.listDichD);
+         new Aco();
         
     }
 }

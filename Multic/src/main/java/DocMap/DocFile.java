@@ -28,6 +28,20 @@ public class DocFile {
         soNode = scan.nextInt();
         SoDomain = scan.nextInt();
         scan.nextLine();
-        
+        while(scan.hasNextInt()) listDichDomain.add(scan.nextInt());
+        scan.nextLine();
+        ArrayList<Integer> tmp = new ArrayList<>();
+        for(int i=0;i<SoDomain;i++){
+            while(scan.hasNextInt()) tmp.add(scan.nextInt());
+            listDinhDomain.add(tmp);
+            scan.nextLine();
+        }
+        while(scan.hasNextLine()){
+            int t1 = scan.nextInt();
+            int t2 = scan.nextInt();
+            int t3 = scan.nextInt();
+            Edge ex = new Edge(t1, t2, t3);
+            listCanhDomain.add(ex);
+        }
     }
 }

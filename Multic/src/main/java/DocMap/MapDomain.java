@@ -13,8 +13,8 @@ import java.util.ArrayList;
  * @author VietAnh
  */
 public class MapDomain {
-    static ArrayList<Edge> listCanhD;
-    static ArrayList<Integer> listDichD;
+    public static ArrayList<Edge> listCanhD;
+    public static ArrayList<Integer> listDichD;
     
     public MapDomain(){
         for(int i=0; i<DocFile.listCanhDomain.size();i++){
