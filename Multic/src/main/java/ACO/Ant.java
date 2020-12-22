@@ -9,6 +9,7 @@ package ACO;
 
 import static ACO.SoLieu.al;
 import static ACO.SoLieu.be;
+import DocMap.DocFile;
 import static java.lang.Math.pow;
 import java.util.ArrayList;
 
@@ -35,11 +36,10 @@ public class Ant {
 
     
     public void CanhNext(){
-        ArrayList<Integer> Canh = new ArrayList<>(2);
         ArrayList<Double> ts = new ArrayList();
         double xs=0,ms=0;
-        int dem = 0,index1=0,index2=0;
-        double q = SoLieu.rd.nextDouble();
+        int dem = 0;
+        double q = SoLieu.ranDom();
         for(int i=0;i<DaTham.size();i++){
             int tpnow = DaTham.get(i);
             for(int j=0;j<Map.listCanh.size();j++)
@@ -69,11 +69,26 @@ public class Ant {
        
     }
     
+    public ArrayList CatTia(ArrayList<Edge> ht, ArrayList<Integer> d){
+        ArrayList<Integer> d2 =d;
+        for(int i=ht.size()-1;i>=0; i++)
+            for(int j=0;j<d2.size();j++){
+                if(ht.get(i).d2 ==  d2.get(j)) {
+                    d.remove(j);
+                    d2.add(ht.get(i).d1);
+                    }
+                else ht.remove(i);
+            }
+        return ht;
+    }
+    
     
     public void TimDuong(){
         for(int i=0;i<Map.listDich.size();i++){
             int tmp=Map.listDich.get(i);
             while(!DaTham.contains(tmp)) CanhNext();
         }
+        HanhTrinh = CatTia(HanhTrinh, DocFile.listDichDomain);
+        for(int i=0;i<HanhTrinh.size();i++) QuangDuong = QuangDuong + HanhTrinh.get(i).kc;
     }
 }

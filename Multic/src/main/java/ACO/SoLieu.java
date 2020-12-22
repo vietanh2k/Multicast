@@ -7,7 +7,7 @@ package ACO;
 
 
 import java.util.Random;
-import java.util.ArrayList;
+
 
 /**
  *
@@ -23,10 +23,10 @@ public class SoLieu {
     static double tmin = 0;
     static Random rd ;
     
-    public static void KhoiTao(){
+    public static double ranDom(){
         rd = new Random();
 //        tmax = SLkien /(bayhoi * UocLuongS());
-        tmin = tmax;
+        return rd.nextDouble();
     }
     
 //    public static double UocLuongS(){

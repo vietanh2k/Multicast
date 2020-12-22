@@ -7,18 +7,30 @@ package ACO;
 
 import DocMap.DocFile;
 import DocMap.MapDomain;
+import DocMap.MapNode;
 import java.io.IOException;
+import java.util.ArrayList;
+
 
 /**
  *
  * @author VietAnh
  */
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException  {
          new DocFile();
          new MapDomain();
          new Map(MapDomain.listCanhD, MapDomain.listDichD);
-         new Aco();
+         for(int k=0;k<50;k++) {
+            Aco u1 = new Aco(k);
+            ArrayList<Edge> tm2 = MapNode.listCanhN;
+            for(int u=0;u<u1.HTmin.size();u++) tm2.add(u1.HTmin.get(u));
+            new Map(tm2, DocFile.listDichDomain);
+            for(int h=0;h<50;h++) {
+                Aco h1 = new Aco(h);
+                System.out.println("ACO.Main.main()");
+            }
+         }
         
     }
 }

@@ -11,7 +11,7 @@ import static ACO.SoLieu.q;
 import static ACO.SoLieu.tmax;
 import static ACO.SoLieu.tmin;
 import java.util.ArrayList;
-import java.util.List;
+
 /**
  *
  * @author VietAnh

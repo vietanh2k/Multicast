@@ -16,20 +16,22 @@ public class Aco {
     double Smin;
     ArrayList<Edge> HTmin;
     
-    public Aco(){
+    public Aco(int k){
         for(int i=0;i<50;i++){
-        KhoiTaoACO();
-        ChayACO();
+        danKien = new DanKien(); 
+        danKien.KienChay();
         DanKien.CapNhatMui(Smin);
         Smin = DanKien.QuangDuongmin;
         HTmin = DanKien.HanhTrinhmin;
         }
     }
-    public void KhoiTaoACO(){
-       danKien = new DanKien();       
-    }
-    
-    public void ChayACO(){
-        danKien.KienChay();
-    }
+//    public void KhoiTaoACO(){
+//       danKien = new DanKien();       
+//    }
+//    
+//    public void ChayACO(){
+//        danKien.KienChay();
+//    }
+//    
+//    
 }
