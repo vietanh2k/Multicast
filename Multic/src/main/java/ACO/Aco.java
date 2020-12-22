@@ -12,9 +12,9 @@ import java.util.ArrayList;
  * @author VietAnh
  */
 public class Aco {
-    DanKien danKien;
-    double Smin;
-    ArrayList<Edge> HTmin;
+    public DanKien danKien;
+    public double Smin;
+    public ArrayList<Edge> HTmin;
     
     public Aco(int k){
         for(int i=0;i<50;i++){

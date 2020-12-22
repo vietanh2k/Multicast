@@ -17,10 +17,10 @@ import java.util.ArrayList;
  * @author VietAnh
  */
 public class DanKien {
-    ArrayList<Ant> DSkien;
-    static double QuangDuongmin;
-    static ArrayList<Edge> HanhTrinhmin;
-    static ArrayList<Integer> CanhDaTham;
+    public ArrayList<Ant> DSkien;
+    public static double QuangDuongmin;
+    public static ArrayList<Edge> HanhTrinhmin;
+    public static ArrayList<Integer> CanhDaTham;
     
     public DanKien(){
         

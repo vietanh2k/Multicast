@@ -14,7 +14,6 @@ import java.util.ArrayList;
  */
 public class MapNode {
     public static ArrayList<Edge> listCanhN;
-    static ArrayList<Integer> listDichN;
 
     public MapNode() {
         for(int i=0; i<DocFile.listCanhDomain.size();i++){

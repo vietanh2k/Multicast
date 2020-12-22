@@ -12,9 +12,9 @@ import java.util.ArrayList;
  * @author VietAnh
  */
 public class Map {
-    static ArrayList<Edge> listCanh;
-    static ArrayList<Integer> listDinh;
-    static ArrayList<Integer> listDich;
+    public static ArrayList<Edge> listCanh;
+    public static ArrayList<Integer> listDinh;
+    public static ArrayList<Integer> listDich;
     
     public Map(ArrayList<Edge> listcanh, ArrayList<Integer> listdich){
         listCanh = listcanh;

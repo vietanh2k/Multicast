@@ -14,14 +14,14 @@ import java.util.Random;
  * @author VietAnh
  */
 public class SoLieu {
-    static int al = 1;
-    static int be = 4;
-    static int q = 3;
-    static int SLkien = 50;
-    static double bayhoi = 0.3;
-    static double tmax = 0;
-    static double tmin = 0;
-    static Random rd ;
+    public static int al = 1;
+    public static int be = 4;
+    public static int q = 3;
+    public static int SLkien = 50;
+    public static double bayhoi = 0.3;
+    public static double tmax = 0;
+    public static double tmin = 0;
+    public static Random rd ;
     
     public static double ranDom(){
         rd = new Random();

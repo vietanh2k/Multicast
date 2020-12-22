@@ -14,11 +14,13 @@ public class Edge {
     public int d1;
     public int d2;
     public double kc;
-    double mui;
+    public double mui;
+    public int index;
     
-    public Edge(int d1, int d2, double kc){
+    public Edge(int d1, int d2, double kc, int index){
         this.d1 = d1;
         this.d2 = d2;
         this.kc = kc;
+        this.index = index;
     }
 }

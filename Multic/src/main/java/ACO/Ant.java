@@ -18,10 +18,10 @@ import java.util.ArrayList;
  * @author VietAnh
  */
 public class Ant {
-    int ID;
-    double QuangDuong;
-    ArrayList<Edge> HanhTrinh;
-    ArrayList<Integer> DaTham;
+    public int ID;
+    public double QuangDuong;
+    public ArrayList<Edge> HanhTrinh;
+    public ArrayList<Integer> DaTham;
     
 
 
