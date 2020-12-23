@@ -32,8 +32,8 @@ public class Main {
         c.add(t1);c.add(t2);c.add(t3);c.add(t4);c.add(t5);c.add(t6);c.add(t7);c.add(t8);
         d.add(7);
         new Map(c, d);
-        Aco a1 = new Aco(1);
-        System.out.println(a1.Smin);
+       Aco a1 = new Aco(1);
+        System.out.println(Map.listCanh.size());
   //       new DocFile();
  //         new MapDomain();
 //         System.out.println(MapDomain.listCanhD.size());
@@ -46,7 +46,7 @@ public class Main {
 //                            System.out.println("ACO.Main.main()");
 //         for(int k=0;k<1;k++) {
  //           Aco u1 = new Aco(1);
- //           System.out.println("ACO.Main.main()");
+ //         System.out.println("ACO.Main.main()");
 //            ArrayList<Edge> tm2 = MapNode.listCanhN;
 //            System.out.println(tm2.size());
 //            for(int u=0;u<u1.HTmin.size();u++) tm2.add(DocFile.listCanhDomain.get(u1.HTmin.get(u).index));

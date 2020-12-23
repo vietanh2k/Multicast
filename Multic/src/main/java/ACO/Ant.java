@@ -18,18 +18,18 @@ import java.util.ArrayList;
  * @author VietAnh
  */
 public class Ant {
-    public int ID;
-    public double QuangDuong;
-    public ArrayList<Edge> HanhTrinh;
-    public ArrayList<Integer> DaTham;
+    private int ID;
+    private double QuangDuong;
+    private ArrayList<Edge> HanhTrinh;
+    private ArrayList<Integer> DaTham;
     
 
 
     public Ant(int id) {
-        HanhTrinh = new ArrayList<Edge>();
+        HanhTrinh = new ArrayList<>();
         DaTham = new ArrayList();       
-        DaTham.add(1);
-        ID=id;
+        DaTham.add(Map.listDich.get(0));
+        this.ID=id;
         QuangDuong = 0;
     }
 
@@ -43,9 +43,9 @@ public class Ant {
         for(int i=0;i<DaTham.size();i++){
             int tpnow = DaTham.get(i);
             for(int j=0;j<Map.listCanh.size();j++)
-            if(Map.listCanh.get(j).d1 == tpnow && !DaTham.contains(Map.listCanh.get(j).d2)){
+            if(Map.listCanh.get(j).getd1() == tpnow && !DaTham.contains(Map.listCanh.get(j).getd2())){
                     
-                double tmp = pow(Map.listCanh.get(j).mui, al) / pow(Map.listCanh.get(j).kc, be);
+                double tmp = pow(Map.listCanh.get(j).getmui(), al) / pow(Map.listCanh.get(j).getkc(), be);
                 ms=ms+tmp;
                 ts.add(tmp);
         }            
@@ -54,14 +54,14 @@ public class Ant {
         for(int i=0;i<DaTham.size();i++){
             int tpnow = DaTham.get(i);
             for(int j=0;j<Map.listCanh.size();j++)
-            if(Map.listCanh.get(j).d1 == tpnow && !DaTham.contains(Map.listCanh.get(j).d2)){                    
+            if(Map.listCanh.get(j).getd1() == tpnow && !DaTham.contains(Map.listCanh.get(j).getd2())){                    
                 xs = xs+ ts.get(dem)/ms;
                 dem++;
                 if(xs>=q) {
-                   DaTham.add(Map.listCanh.get(j).d2);
+                   DaTham.add(Map.listCanh.get(j).getd2());
                    HanhTrinh.add(Map.listCanh.get(j));
-                   QuangDuong = QuangDuong + Map.listCanh.get(j).kc;
-                   DanKien.CanhDaTham.add(j);
+//                   QuangDuong = QuangDuong + Map.listCanh.get(j).getkc();
+//                   DanKien.CanhDaTham.add(j);
                    break;
                }
         }            
@@ -73,9 +73,9 @@ public class Ant {
         ArrayList<Integer> d2 =d;
         for(int i=ht.size()-1;i>=0; i++)
             for(int j=0;j<d2.size();j++){
-                if(ht.get(i).d2 ==  d2.get(j)) {
+                if(ht.get(i).getd2() ==  d2.get(j)) {
                     d.remove(j);
-                    d2.add(ht.get(i).d1);
+                    d2.add(ht.get(i).getd1());
                     }
                 else ht.remove(i);
             }
@@ -89,6 +89,44 @@ public class Ant {
             while(!DaTham.contains(tmp)) CanhNext();
         }
         HanhTrinh = CatTia(HanhTrinh, DocFile.listDichDomain);
-        for(int i=0;i<HanhTrinh.size();i++) QuangDuong = QuangDuong + HanhTrinh.get(i).kc;
+        for(int i=0;i<HanhTrinh.size();i++) 
+            {QuangDuong = QuangDuong + HanhTrinh.get(i).getkc();
+             if(DanKien.CanhDaTham.contains(HanhTrinh.get(i).getindex())) 
+                 DanKien.CanhDaTham.add(HanhTrinh.get(i).getindex());
+            }
     }
+    
+    public int getID(){
+        return ID;
+    }
+    
+    public void setID(int ID){
+        this.ID = ID;
+    }
+    
+    public double getQD(){
+        return QuangDuong;
+    }
+    
+    public void setQD(double QuangDuong){
+        this.QuangDuong = QuangDuong;
+    }
+    
+    public ArrayList getHT(){
+        return HanhTrinh;
+    }
+    
+    public void setHT(ArrayList HanhTrinh){
+        this.HanhTrinh = HanhTrinh;
+    }
+    
+    public ArrayList getDaTham(){
+        return DaTham;
+    }
+    
+    public void setDaTham(ArrayList DaTham){
+        this.DaTham = DaTham;
+    }
+    
+    
 }

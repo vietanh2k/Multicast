@@ -12,18 +12,26 @@ import java.util.ArrayList;
  * @author VietAnh
  */
 public class Aco {
-    public DanKien danKien;
-    public double Smin;
-    public ArrayList<Edge> HTmin;
+    private DanKien danKien;
+    private double Smin;
+    private ArrayList<Edge> HTmin;
     
     public Aco(int k){
         
         danKien = new DanKien(); 
         danKien.KienChay();
         DanKien.CapNhatMui(Smin);
-        Smin = DanKien.QuangDuongmin;
-        HTmin = DanKien.HanhTrinhmin;
+        Smin = danKien.getQDmin();
+        HTmin = danKien.getHTmin();
         
+    }
+    
+    public double getSmin(){
+        return Smin;
+    }
+    
+    public ArrayList getHT2min(){
+        return HTmin;
     }
 //    public void KhoiTaoACO(){
 //       danKien = new DanKien();       

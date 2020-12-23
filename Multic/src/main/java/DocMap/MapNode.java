@@ -17,9 +17,9 @@ public class MapNode {
 
     public MapNode() {
         for(int i=0; i<DocFile.listCanhDomain.size();i++){
-            int d11 = DocFile.listCanhDomain.get(i).d1;
-            int d22 = DocFile.listCanhDomain.get(i).d2;
-            double w = DocFile.listCanhDomain.get(i).kc;
+            int d11 = DocFile.listCanhDomain.get(i).getd1();
+            int d22 = DocFile.listCanhDomain.get(i).getd2();
+            double w = DocFile.listCanhDomain.get(i).getkc();
             for(int k=0;k<DocFile.SoDomain;k++)
             if(DocFile.listDinhDomain.get(k).contains(d11) && DocFile.listDinhDomain.get(k).contains(d22)){
               listCanhN.add(DocFile.listCanhDomain.get(i));

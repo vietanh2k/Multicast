@@ -53,6 +53,7 @@ public class DocFile {
                 listCanhDomain.add(ex);
                 index1++;
             }
+            scan.close();
         }
     
 }

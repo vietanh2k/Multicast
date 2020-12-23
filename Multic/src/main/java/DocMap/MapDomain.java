@@ -20,10 +20,10 @@ public class MapDomain {
         listCanhD = new ArrayList<>();
         listDichD = new ArrayList<>();
         for(int i=0; i<DocFile.listCanhDomain.size();i++){
-            int d11 = DocFile.listCanhDomain.get(i).d1;
-            int d22 = DocFile.listCanhDomain.get(i).d2;
-            double w = DocFile.listCanhDomain.get(i).kc;
-            int ind = DocFile.listCanhDomain.get(i).index;
+            int d11 = DocFile.listCanhDomain.get(i).getd1();
+            int d22 = DocFile.listCanhDomain.get(i).getd2();
+            double w = DocFile.listCanhDomain.get(i).getkc();
+            int ind = DocFile.listCanhDomain.get(i).getindex();
             int t1 = 0,t2=0;
         for(int j=0;j< DocFile.SoDomain;j++)      
         {   

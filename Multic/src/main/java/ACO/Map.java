@@ -13,7 +13,6 @@ import java.util.ArrayList;
  */
 public class Map {
     public static ArrayList<Edge> listCanh;
-    public static ArrayList<Integer> listDinh;
     public static ArrayList<Integer> listDich;
     
     public Map(ArrayList<Edge> listcanh, ArrayList<Integer> listdich){
@@ -23,9 +22,7 @@ public class Map {
         listDich = listdich;
     }
     
-    public void setListCanh(){
-        this.listCanh= listCanh;
-        }
+
     
     public ArrayList getListCanh(){
         return listCanh;
