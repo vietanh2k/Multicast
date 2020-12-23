@@ -17,8 +17,18 @@ public class Map {
     public static ArrayList<Integer> listDich;
     
     public Map(ArrayList<Edge> listcanh, ArrayList<Integer> listdich){
+        listCanh = new ArrayList<>();
+        listDich = new ArrayList<>();
         listCanh = listcanh;
         listDich = listdich;
+    }
+    
+    public void setListCanh(){
+        this.listCanh= listCanh;
+        }
+    
+    public ArrayList getListCanh(){
+        return listCanh;
     }
     
 }

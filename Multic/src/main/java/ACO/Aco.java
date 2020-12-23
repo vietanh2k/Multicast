@@ -17,13 +17,13 @@ public class Aco {
     public ArrayList<Edge> HTmin;
     
     public Aco(int k){
-        for(int i=0;i<50;i++){
+        
         danKien = new DanKien(); 
         danKien.KienChay();
         DanKien.CapNhatMui(Smin);
         Smin = DanKien.QuangDuongmin;
         HTmin = DanKien.HanhTrinhmin;
-        }
+        
     }
 //    public void KhoiTaoACO(){
 //       danKien = new DanKien();       

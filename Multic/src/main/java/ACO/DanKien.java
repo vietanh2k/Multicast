@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class DanKien {
     public ArrayList<Ant> DSkien;
-    public static double QuangDuongmin;
+    public  double QuangDuongmin;
     public static ArrayList<Edge> HanhTrinhmin;
     public static ArrayList<Integer> CanhDaTham;
     
