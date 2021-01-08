@@ -28,7 +28,7 @@ public class DocFile {
         listDichDomain = new ArrayList<>();
         listDinhDomain = new ArrayList<>();
 
-        File file = new File("C:\\Users\\VietAnh\\Downloads\\test.txt");
+        File file = new File("C:\\Users\\VietAnh\\Downloads\\test2.txt");
         try (Scanner scan = new Scanner(file)) {
             soNode = scan.nextInt();
             SoDomain = scan.nextInt();

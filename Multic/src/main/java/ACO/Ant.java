@@ -42,16 +42,13 @@ public class Ant {
         boolean check1 = false;
         boolean check5 = false;
         double q = SoLieu.ranDom();
-        for(int i=0;i<DaTham.size();i++){
-            int tpnow = DaTham.get(i);
-            for(int j=0;j<m1.listCanh.size();j++){
-            if(m1.listCanh.get(j).getd1() == tpnow && !DaTham.contains(m1.listCanh.get(j).getd2())){
+        for(int j=0;j<m1.listCanh.size();j++){
+            if(DaTham.contains(m1.listCanh.get(j).getd1()) && !DaTham.contains(m1.listCanh.get(j).getd2())){
                 check5 = true;
                 double tmp = pow(m1.listCanh.get(j).getmui(), al) / pow(m1.listCanh.get(j).getkc(), be);
                 ms=ms+tmp;
                 ts.add(tmp);
-                }
-            }            
+            }                       
         }
         for(int i=0;i<DaTham.size();i++){
             int tpnow = DaTham.get(i);
@@ -99,6 +96,7 @@ public class Ant {
                boolean g = CanhNext();
                if(g == false) {
                    check3 = true;
+                   QuangDuong = 999;
                    System.out.println("Khong tim duoc!");
                    break;
                }
