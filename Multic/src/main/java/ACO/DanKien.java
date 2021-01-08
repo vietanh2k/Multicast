@@ -47,7 +47,8 @@ public class DanKien {
     
     public void KienChay(){
             for(int i=0;i<DSkien.size();i++){
-               DSkien.get(i).TimDuong();
+               boolean f = DSkien.get(i).TimDuong();
+               if(f == true) break;
                if(DSkien.get(i).getQD() < QuangDuongmin){
                    QuangDuongmin = DSkien.get(i).getQD();
                    HanhTrinhmin = DSkien.get(i).getHT();

@@ -35,24 +35,24 @@ public class Ant {
     
 
     
-    public void CanhNext(){
+    public boolean CanhNext(){
         ArrayList<Double> ts = new ArrayList();
         double xs=0,ms=0;
         int dem = 0;
         boolean check1 = false;
+        boolean check5 = false;
         double q = SoLieu.ranDom();
         for(int i=0;i<DaTham.size();i++){
             int tpnow = DaTham.get(i);
             for(int j=0;j<m1.listCanh.size();j++){
             if(m1.listCanh.get(j).getd1() == tpnow && !DaTham.contains(m1.listCanh.get(j).getd2())){
-                    
+                check5 = true;
                 double tmp = pow(m1.listCanh.get(j).getmui(), al) / pow(m1.listCanh.get(j).getkc(), be);
                 ms=ms+tmp;
                 ts.add(tmp);
                 }
             }            
         }
-        
         for(int i=0;i<DaTham.size();i++){
             int tpnow = DaTham.get(i);
             for(int j=0;j<m1.listCanh.size();j++){
@@ -69,7 +69,7 @@ public class Ant {
             }
             if(check1 == true) break;
         }
-       
+       return check5;
     }
     
     public ArrayList CatTia(ArrayList<Edge> ht, ArrayList<Integer> d){
@@ -91,19 +91,19 @@ public class Ant {
     }
     
     
-   public void TimDuong(){
+   public boolean TimDuong(){
        boolean check3 = false;
         for(int i=0;i<m1.listDich.size();i++){
             int tmp=m1.listDich.get(i);
            while(!DaTham.contains(tmp)){               
-               CanhNext();
-               if(HanhTrinh.size() == m1.listCanh.size()-1) 
-                    {   
-                        QuangDuong = 9999;
-                        check3 = true;
-                        break;
-                    }
+               boolean g = CanhNext();
+               if(g == false) {
+                   check3 = true;
+                   System.out.println("Khong tim duoc!");
+                   break;
+               }
            }
+           if(check3 == true) break;
         }
         
         if(check3 == false){
@@ -115,6 +115,7 @@ public class Ant {
                 DanKien.CanhDaTham.add(HanhTrinh.get(i).getindex());
             }
         }
+        return check3;
     }
     
     public int getID(){

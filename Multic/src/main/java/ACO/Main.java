@@ -26,14 +26,14 @@ public class Main {
         
         Map M1 = new Map(MapDomain.listCanhD, MapDomain.listDichD);
         Aco u1 = new Aco(M1);
-        for(int k=0;k<50;k++){
+        for(int k=0;k<1;k++){
             u1.ChayACO(k);
             ArrayList<Edge> tm2 = new ArrayList<>();
             for(int i=0;i<MapNode.listCanhN.size();i++) tm2.add(MapNode.listCanhN.get(i));
             for(int u=0;u<u1.getHT2min().size();u++) tm2.add(DocFile.listCanhDomain.get(u1.getHT2min().get(u).getindex()));
             Map M2 = new Map(tm2, DocFile.listDichDomain);
             Aco u2 = new Aco(M2);
-            for(int h=0;h<10;h++){
+            for(int h=0;h<1;h++){
                 u2.ChayACO(h);
                 if(u2.getSmin()<S){
                     S= u2.getSmin();
