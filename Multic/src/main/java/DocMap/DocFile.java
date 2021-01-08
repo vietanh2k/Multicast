@@ -28,8 +28,8 @@ public class DocFile {
         listDichDomain = new ArrayList<>();
         listDinhDomain = new ArrayList<>();
 
-        File file = new File("C:\\Users\\VietAnh\\Downloads\\idpc_ndu_427_7_14927.txt");
-         Scanner scan = new Scanner(file) ;
+        File file = new File("C:\\Users\\VietAnh\\Downloads\\test2.txt");
+        try (Scanner scan = new Scanner(file)) {
             soNode = scan.nextInt();
             SoDomain = scan.nextInt();
             scan.nextLine();
@@ -49,11 +49,13 @@ public class DocFile {
                 int t2 = scan.nextInt();
                 int t3 = scan.nextInt();
                 scan.nextLine();
-                Edge ex = new Edge(t1, t2, t3, index1);
+                Edge ex = new Edge(t1, t2, t3, index1,20);
                 listCanhDomain.add(ex);
                 index1++;
             }
-            scan.close();
         }
+        }
+    
+
     
 }

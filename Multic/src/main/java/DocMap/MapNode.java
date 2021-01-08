@@ -16,6 +16,7 @@ public class MapNode {
     public static ArrayList<Edge> listCanhN;
 
     public MapNode() {
+        listCanhN = new ArrayList<>();
         for(int i=0; i<DocFile.listCanhDomain.size();i++){
             int d11 = DocFile.listCanhDomain.get(i).getd1();
             int d22 = DocFile.listCanhDomain.get(i).getd2();

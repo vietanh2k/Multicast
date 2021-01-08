@@ -19,17 +19,13 @@ public class SoLieu {
     public static int q = 3;
     public static int SLkien = 50;
     public static double bayhoi = 0.3;
-    public static double tmax = 0;
-    public static double tmin = 0;
+    public static double tmax = 20;
+    public static double tmin = 10;
     public static Random rd ;
     
     public static double ranDom(){
         rd = new Random();
-//        tmax = SLkien /(bayhoi * UocLuongS());
         return rd.nextDouble();
     }
     
-//    public static double UocLuongS(){
-//        
-//    }
 }

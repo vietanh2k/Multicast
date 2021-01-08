@@ -5,6 +5,11 @@
  */
 package ACO;
 
+import static ACO.DanKien.CanhDaTham;
+import static ACO.SoLieu.bayhoi;
+import static ACO.SoLieu.q;
+import static ACO.SoLieu.tmax;
+import static ACO.SoLieu.tmin;
 import java.util.ArrayList;
 
 /**
@@ -12,17 +17,27 @@ import java.util.ArrayList;
  * @author VietAnh
  */
 public class Map {
-    public static ArrayList<Edge> listCanh;
-    public static ArrayList<Integer> listDich;
+    public ArrayList<Edge> listCanh;
+    public ArrayList<Integer> listDich;
     
     public Map(ArrayList<Edge> listcanh, ArrayList<Integer> listdich){
-        listCanh = new ArrayList<>();
-        listDich = new ArrayList<>();
-        listCanh = listcanh;
-        listDich = listdich;
+        this.listCanh = listcanh;
+        this.listDich = listdich;
     }
     
-
+    public void CapNhatMui(double Smin){
+        for(int i=0;i<listCanh.size();i++)
+           listCanh.get(i).setmui(listCanh.get(i).getmui() * (1 - bayhoi)); 
+        
+        double delta = q/Smin;
+        for(int u=0;u<listCanh.size();u++)
+            if(CanhDaTham.contains(listCanh.get(u).getindex())){
+            double Tij = listCanh.get(u).getmui() + delta;
+            if(Tij>tmax)   Tij = tmax;
+            if(Tij<tmin)   Tij = tmin;
+            listCanh.get(u).setmui(Tij); 
+        }
+    }
     
     public ArrayList getListCanh(){
         return listCanh;

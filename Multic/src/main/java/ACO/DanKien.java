@@ -21,16 +21,16 @@ public class DanKien {
     private  double QuangDuongmin;
     private ArrayList<Edge> HanhTrinhmin;
     public static ArrayList<Integer> CanhDaTham;
+    public Map m2;
     
-    public DanKien(){
-        
+    public DanKien(Map m2){
+        this.m2 = m2;
         QuangDuongmin = 9999;
         HanhTrinhmin = new ArrayList<>();
         CanhDaTham = new ArrayList<>();
          DSkien = new ArrayList<>();
-        Ant ant;
         for(int i=0;i<SLkien;i++) {
-            ant = new Ant(i);
+           Ant ant = new Ant(i,m2);
             DSkien.add(ant);
         }
     }
@@ -39,25 +39,14 @@ public class DanKien {
         return QuangDuongmin;
     }
     
-    public ArrayList getHTmin(){
+    public ArrayList<Edge> getHTmin(){
         return HanhTrinhmin;
     }
     
-    public static void CapNhatMui(double Smin){
-        for(int i=0;i<Map.listCanh.size();i++)
-           Map.listCanh.get(i).setmui(Map.listCanh.get(i).getmui() * (1 - bayhoi)); 
-        
-        double delta = q/Smin;
-        for(int u=0;u<CanhDaTham.size();u++){
-            double Tij = Map.listCanh.get(CanhDaTham.get(u)).getmui() + delta;
-            if(Tij>tmax)   Tij = tmax;
-            if(Tij<tmin)   Tij = tmin;
-            Map.listCanh.get(CanhDaTham.get(u)).setmui(Tij); 
-        }
-    }
+    
     
     public void KienChay(){
-            for(int i=0;i<SLkien;i++){
+            for(int i=0;i<DSkien.size();i++){
                DSkien.get(i).TimDuong();
                if(DSkien.get(i).getQD() < QuangDuongmin){
                    QuangDuongmin = DSkien.get(i).getQD();

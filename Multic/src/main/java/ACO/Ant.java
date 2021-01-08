@@ -9,7 +9,6 @@ package ACO;
 
 import static ACO.SoLieu.al;
 import static ACO.SoLieu.be;
-import DocMap.DocFile;
 import static java.lang.Math.pow;
 import java.util.ArrayList;
 
@@ -22,78 +21,100 @@ public class Ant {
     private double QuangDuong;
     private ArrayList<Edge> HanhTrinh;
     private ArrayList<Integer> DaTham;
-    
+    public Map m1;
 
 
-    public Ant(int id) {
+    public Ant(int id, Map m1) {
+        this.m1 = m1;
         HanhTrinh = new ArrayList<>();
         DaTham = new ArrayList();       
-        DaTham.add(Map.listDich.get(0));
+        DaTham.add(m1.listDich.get(0));
         this.ID=id;
         QuangDuong = 0;
     }
-
+    
 
     
     public void CanhNext(){
         ArrayList<Double> ts = new ArrayList();
         double xs=0,ms=0;
         int dem = 0;
+        boolean check1 = false;
         double q = SoLieu.ranDom();
         for(int i=0;i<DaTham.size();i++){
             int tpnow = DaTham.get(i);
-            for(int j=0;j<Map.listCanh.size();j++)
-            if(Map.listCanh.get(j).getd1() == tpnow && !DaTham.contains(Map.listCanh.get(j).getd2())){
+            for(int j=0;j<m1.listCanh.size();j++){
+            if(m1.listCanh.get(j).getd1() == tpnow && !DaTham.contains(m1.listCanh.get(j).getd2())){
                     
-                double tmp = pow(Map.listCanh.get(j).getmui(), al) / pow(Map.listCanh.get(j).getkc(), be);
+                double tmp = pow(m1.listCanh.get(j).getmui(), al) / pow(m1.listCanh.get(j).getkc(), be);
                 ms=ms+tmp;
                 ts.add(tmp);
-        }            
+                }
+            }            
         }
         
         for(int i=0;i<DaTham.size();i++){
             int tpnow = DaTham.get(i);
-            for(int j=0;j<Map.listCanh.size();j++)
-            if(Map.listCanh.get(j).getd1() == tpnow && !DaTham.contains(Map.listCanh.get(j).getd2())){                    
+            for(int j=0;j<m1.listCanh.size();j++){
+            if(m1.listCanh.get(j).getd1() == tpnow && !DaTham.contains(m1.listCanh.get(j).getd2())){                    
                 xs = xs+ ts.get(dem)/ms;
                 dem++;
                 if(xs>=q) {
-                   DaTham.add(Map.listCanh.get(j).getd2());
-                   HanhTrinh.add(Map.listCanh.get(j));
-//                   QuangDuong = QuangDuong + Map.listCanh.get(j).getkc();
-//                   DanKien.CanhDaTham.add(j);
+                   DaTham.add(m1.listCanh.get(j).getd2());
+                   HanhTrinh.add(m1.listCanh.get(j));
+                   check1 = true;
                    break;
-               }
-        }            
+                    }
+                }            
+            }
+            if(check1 == true) break;
         }
        
     }
     
     public ArrayList CatTia(ArrayList<Edge> ht, ArrayList<Integer> d){
-        ArrayList<Integer> d2 =d;
-        for(int i=ht.size()-1;i>=0; i++)
+        ArrayList<Integer> d2 = new ArrayList<>();
+        for(int i=0;i<d.size();i++) d2.add(d.get(i));
+        for(int i=ht.size()-1;i>=0; i--){
+            boolean check2 = false;
             for(int j=0;j<d2.size();j++){
                 if(ht.get(i).getd2() ==  d2.get(j)) {
-                    d.remove(j);
-                    d2.add(ht.get(i).getd1());
+                    if(d2.contains(ht.get(i).getd1())) d2.remove(j);
+                    else d2.set(j, ht.get(i).getd1());                                       
+                    check2 = true;
+                    break;
                     }
-                else ht.remove(i);
             }
+            if(check2 == false) ht.remove(i);
+        }
         return ht;
     }
     
     
-    public void TimDuong(){
-        for(int i=0;i<Map.listDich.size();i++){
-            int tmp=Map.listDich.get(i);
-            while(!DaTham.contains(tmp)) CanhNext();
+   public void TimDuong(){
+       boolean check3 = false;
+        for(int i=0;i<m1.listDich.size();i++){
+            int tmp=m1.listDich.get(i);
+           while(!DaTham.contains(tmp)){               
+               CanhNext();
+               if(HanhTrinh.size() == m1.listCanh.size()-1) 
+                    {   
+                        QuangDuong = 9999;
+                        check3 = true;
+                        break;
+                    }
+           }
         }
-        HanhTrinh = CatTia(HanhTrinh, DocFile.listDichDomain);
+        
+        if(check3 == false){
+       HanhTrinh = CatTia(HanhTrinh, m1.listDich);
         for(int i=0;i<HanhTrinh.size();i++) 
-            {QuangDuong = QuangDuong + HanhTrinh.get(i).getkc();
-             if(DanKien.CanhDaTham.contains(HanhTrinh.get(i).getindex())) 
-                 DanKien.CanhDaTham.add(HanhTrinh.get(i).getindex());
+            {
+             QuangDuong = QuangDuong + HanhTrinh.get(i).getkc();
+             if(!DanKien.CanhDaTham.contains(HanhTrinh.get(i).getindex())) 
+                DanKien.CanhDaTham.add(HanhTrinh.get(i).getindex());
             }
+        }
     }
     
     public int getID(){
@@ -112,7 +133,7 @@ public class Ant {
         this.QuangDuong = QuangDuong;
     }
     
-    public ArrayList getHT(){
+    public ArrayList<Edge> getHT(){
         return HanhTrinh;
     }
     

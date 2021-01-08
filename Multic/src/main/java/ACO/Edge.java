@@ -17,12 +17,15 @@ public class Edge {
     private double mui;
     private int index;
     
-    public Edge(int d1, int d2, double kc, int index){
+    public Edge(int d1, int d2, double kc, int index, double mui){
         this.d1 = d1;
         this.d2 = d2;
         this.kc = kc;
         this.index = index;
+        this.mui = mui;
     }
+    
+    public Edge(){};
     
     public int getd1(){
         return d1;

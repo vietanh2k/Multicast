@@ -5,6 +5,7 @@
  */
 package ACO;
 
+
 import java.util.ArrayList;
 
 /**
@@ -12,34 +13,38 @@ import java.util.ArrayList;
  * @author VietAnh
  */
 public class Aco {
-    private DanKien danKien;
+    public ArrayList<DanKien> DSdk;
     private double Smin;
     private ArrayList<Edge> HTmin;
+    public Map m;
     
-    public Aco(int k){
-        
-        danKien = new DanKien(); 
-        danKien.KienChay();
-        DanKien.CapNhatMui(Smin);
-        Smin = danKien.getQDmin();
-        HTmin = danKien.getHTmin();
-        
+    public Aco( Map m){
+        this.m = m;
+        Smin = 999;
+        HTmin = new ArrayList<>();
+        DSdk = new ArrayList<>();
+        for(int i=0;i<50;i++) {
+           DanKien danKien = new DanKien(m);
+           DSdk.add(danKien);
+        }
+    }
+    
+    public void ChayACO(int i){
+            DSdk.get(i).KienChay();
+            if(DSdk.get(i).getQDmin()<Smin){
+                Smin = DSdk.get(i).getQDmin();
+                HTmin = DSdk.get(i).getHTmin();
+            
+        }
+
     }
     
     public double getSmin(){
         return Smin;
     }
     
-    public ArrayList getHT2min(){
+    public ArrayList<Edge> getHT2min(){
         return HTmin;
     }
-//    public void KhoiTaoACO(){
-//       danKien = new DanKien();       
-//    }
-//    
-//    public void ChayACO(){
-//        danKien.KienChay();
-//    }
-//    
-//    
+
 }
