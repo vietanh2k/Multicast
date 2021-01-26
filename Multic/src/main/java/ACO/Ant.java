@@ -109,8 +109,8 @@ public class Ant {
         for(int i=0;i<HanhTrinh.size();i++) 
             {
              QuangDuong = QuangDuong + HanhTrinh.get(i).getkc();
-             if(!DanKien.CanhDaTham.contains(HanhTrinh.get(i).getindex())) 
-                DanKien.CanhDaTham.add(HanhTrinh.get(i).getindex());
+//             if(!DanKien.CanhDaTham.contains(HanhTrinh.get(i).getindex())) 
+//                DanKien.CanhDaTham.add(HanhTrinh.get(i).getindex());
             }
         }
         return check3;

@@ -19,7 +19,7 @@ public class SoLieu {
     public static int q = 3;
     public static int SLkien = 50;
     public static double bayhoi = 0.3;
-    public static double tmax = 20;
+    public static double tmax = 50;
     public static double tmin = 10;
     public static Random rd ;
     

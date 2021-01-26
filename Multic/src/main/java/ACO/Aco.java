@@ -23,20 +23,22 @@ public class Aco {
         Smin = 999;
         HTmin = new ArrayList<>();
         DSdk = new ArrayList<>();
-        for(int i=0;i<50;i++) {
+        for(int i=0;i<500;i++) {
            DanKien danKien = new DanKien(m);
            DSdk.add(danKien);
         }
     }
     
     public void ChayACO(int i){
-            DSdk.get(i).KienChay();
-            if(DSdk.get(i).getQDmin()<Smin){
+            boolean w = DSdk.get(i).KienChay();
+            if(w == false){
+                DSdk.get(i).CapNhatMui(Smin);
+                if(DSdk.get(i).getQDmin()<Smin){
                 Smin = DSdk.get(i).getQDmin();
                 HTmin = DSdk.get(i).getHTmin();
             
-        }
-
+                }
+            }
     }
     
     public double getSmin(){
